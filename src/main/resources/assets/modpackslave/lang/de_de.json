@@ -1,0 +1,11 @@
+{
+  "modpackslave.block.compressed_1": "Komprimierter %s",
+  "modpackslave.block.compressed_2": "Doppelt komprimierter %s",
+  "modpackslave.block.compressed_3": "Dreifach komprimierter %s",
+  "modpackslave.block.compressed_4": "Vierfach komprimierter %s",
+  "modpackslave.block.compressed_5": "Fünffach komprimierter %s",
+  "modpackslave.block.compressed_6": "Sechsfach komprimierter %s",
+  "modpackslave.block.compressed_7": "Siebenfach komprimierter %s",
+  "modpackslave.block.compressed_8": "Achtfach komprimierter %s",
+  "modpackslave.block.compressed_9": "Neunfach komprimierter %s"
+}
