@@ -1,0 +1,11 @@
+{
+  "packessentials.block.compressed_1": "Komprimierter %s",
+  "packessentials.block.compressed_2": "Doppelt komprimierter %s",
+  "packessentials.block.compressed_3": "Dreifach komprimierter %s",
+  "packessentials.block.compressed_4": "Vierfach komprimierter %s",
+  "packessentials.block.compressed_5": "Fünffach komprimierter %s",
+  "packessentials.block.compressed_6": "Sechsfach komprimierter %s",
+  "packessentials.block.compressed_7": "Siebenfach komprimierter %s",
+  "packessentials.block.compressed_8": "Achtfach komprimierter %s",
+  "packessentials.block.compressed_9": "Neunfach komprimierter %s"
+}

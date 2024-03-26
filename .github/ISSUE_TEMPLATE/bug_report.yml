@@ -1,5 +1,5 @@
 name: Bug Report
-description: Report an issue with supported versions of Modpack Slave
+description: Report an issue with supported versions of Pack Essentials
 labels: [ bug ]
 body:
   - type: input
@@ -12,7 +12,7 @@ body:
   - type: input
     id: mod-version
     attributes:
-      label: Modpack Slave version
+      label: Pack Essentials version
       placeholder: eg. 1.20.1-1.0.0
     validations:
       required: true

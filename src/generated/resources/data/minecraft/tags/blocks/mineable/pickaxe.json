@@ -1,8 +1,8 @@
 {
   "values": [
-    "modpackslave:compressed_cobbled_deepslate",
-    "modpackslave:compressed_cobblestone",
-    "modpackslave:double_compressed_cobbled_deepslate",
-    "modpackslave:double_compressed_cobblestone"
+    "packessentials:compressed_cobbled_deepslate",
+    "packessentials:compressed_cobblestone",
+    "packessentials:double_compressed_cobbled_deepslate",
+    "packessentials:double_compressed_cobblestone"
   ]
 }
