@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "B": {
+      "item": "minecraft:bone_meal"
+    },
+    "S": {
+      "tag": "forge:sand/red"
+    }
+  },
+  "pattern": [
+    "SB",
+    "BS"
+  ],
+  "result": {
+    "count": 2,
+    "item": "packessentials:red_snad"
+  },
+  "show_notification": true
+}

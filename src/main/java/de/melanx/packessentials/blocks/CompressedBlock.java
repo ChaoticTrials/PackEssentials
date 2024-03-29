@@ -2,7 +2,7 @@ package de.melanx.packessentials.blocks;
 
 import de.melanx.packessentials.Modpack;
 import de.melanx.packessentials.PackEssentials;
-import de.melanx.packessentials.items.CompressedBlockItem;
+import de.melanx.packessentials.items.PackBlockItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -29,7 +29,7 @@ public class CompressedBlock extends PackBlockBase {
     private static final int MAX_COMPRESSION = 9;
     private final Block baseBlock;
     private final int compression;
-    private final CompressedBlockItem item;
+    private final PackBlockItem item;
     private final Component tooltip;
 
     public CompressedBlock(ModX mod, Block baseBlock, int compression, Modpack... modpacks) {
@@ -51,7 +51,7 @@ public class CompressedBlock extends PackBlockBase {
         if (itemProperties == null) {
             this.item = null;
         } else {
-            this.item = new CompressedBlockItem(this, itemProperties) {
+            this.item = new PackBlockItem(this, itemProperties) {
 
                 @Override
                 public void initializeClient(@Nonnull Consumer<IClientItemExtensions> consumer) {

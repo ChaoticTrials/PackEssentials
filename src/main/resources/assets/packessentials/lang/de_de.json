@@ -1,4 +1,7 @@
 {
+  "block.packessentials.snad": "Snad",
+  "block.packessentials.red_snad": "Roter Snad",
+
   "packessentials.block.compressed_1": "Komprimierter %s",
   "packessentials.block.compressed_2": "Doppelt komprimierter %s",
   "packessentials.block.compressed_3": "Dreifach komprimierter %s",

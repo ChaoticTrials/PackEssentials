@@ -1,6 +1,7 @@
 package de.melanx.packessentials;
 
 import de.melanx.packessentials.data.*;
+import de.melanx.packessentials.data.textures.TextureProvider;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -19,6 +20,7 @@ public final class PackEssentials extends ModXRegistration {
         creativeTab = new PackTab(this);
 
         DatagenSystem.create(this, system -> {
+            system.addDataProvider(TextureProvider::new);
             system.addDataProvider(BlockStateProvider::new);
             system.addDataProvider(ItemModelProvider::new);
             system.addDataProvider(LootTableProvider::new);

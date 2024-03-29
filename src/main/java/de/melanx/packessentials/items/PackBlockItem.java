@@ -1,16 +1,16 @@
 package de.melanx.packessentials.items;
 
-import de.melanx.packessentials.blocks.CompressedBlock;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 
 import javax.annotation.Nonnull;
 
-public class CompressedBlockItem extends BlockItem {
+public class PackBlockItem extends BlockItem {
 
-    public CompressedBlockItem(CompressedBlock block, Properties properties) {
+    public PackBlockItem(Block block, Properties properties) {
         super(block, properties);
     }
 

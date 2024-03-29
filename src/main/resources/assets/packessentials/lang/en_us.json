@@ -1,4 +1,7 @@
 {
+  "block.packessentials.snad": "Snad",
+  "block.packessentials.red_snad": "Red Snad",
+
   "packessentials.block.compressed.tooltip": "%sx %s",
 
   "packessentials.block.compressed_1": "Compressed %s",
