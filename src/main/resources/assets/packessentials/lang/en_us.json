@@ -9,10 +9,6 @@
   "packessentials.block.compressed_3": "Triple Compressed %s",
   "packessentials.block.compressed_4": "Quadruple Compressed %s",
   "packessentials.block.compressed_5": "Quintuple Compressed %s",
-  "packessentials.block.compressed_6": "Sextuple Compressed %s",
-  "packessentials.block.compressed_7": "Septuple Compressed %s",
-  "packessentials.block.compressed_8": "Octuple Compressed %s",
-  "packessentials.block.compressed_9": "Nonuple Compressed %s",
 
   "item.packessentials.snad_fertilizer": "Snad Fertilizer",
 

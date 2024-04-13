@@ -26,7 +26,8 @@ import java.util.function.Consumer;
 public class CompressedBlock extends PackBlockBase {
 
     private static final int COMPRESSION_SIZE = 9;
-    private static final int MAX_COMPRESSION = 9;
+    public static final int MAX_COMPRESSION = 5;
+
     private final Block baseBlock;
     private final int compression;
     private final PackBlockItem item;
@@ -68,6 +69,14 @@ public class CompressedBlock extends PackBlockBase {
 
     private boolean hasItem() {
         return this.item != null;
+    }
+
+    public int getCompression() {
+        return this.compression;
+    }
+
+    public Block getBaseBlock() {
+        return this.baseBlock;
     }
 
     @Override

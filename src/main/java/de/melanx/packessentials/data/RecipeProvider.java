@@ -23,10 +23,18 @@ public class RecipeProvider extends RecipeProviderBase implements CompressionExt
     @Override
     protected void setup() {
         this.compress(Blocks.COBBLESTONE, ModBlocks.compressedCobblestone);
+        this.compress(Blocks.ANDESITE, ModBlocks.compressedAndesite);
+        this.compress(Blocks.DIORITE, ModBlocks.compressedDiorite);
+        this.compress(Blocks.GRANITE, ModBlocks.compressedGranite);
         this.compress(Blocks.COBBLED_DEEPSLATE, ModBlocks.compressedCobbledDeepslate);
+        this.compress(Blocks.TUFF, ModBlocks.compressedTuff);
 
         this.compress(ModBlocks.compressedCobblestone, ModBlocks.doubleCompressedCobblestone);
+        this.compress(ModBlocks.compressedAndesite, ModBlocks.doubleCompressedAndesite);
+        this.compress(ModBlocks.compressedDiorite, ModBlocks.doubleCompressedDiorite);
+        this.compress(ModBlocks.compressedGranite, ModBlocks.doubleCompressedGranite);
         this.compress(ModBlocks.compressedCobbledDeepslate, ModBlocks.doubleCompressedCobbledDeepslate);
+        this.compress(ModBlocks.compressedTuff, ModBlocks.doubleCompressedTuff);
 
         this.snad(Ingredient.of(Tags.Items.SAND_COLORLESS), ModBlocks.snad);
         this.snad(Ingredient.of(Tags.Items.SAND_RED), ModBlocks.redSnad);
