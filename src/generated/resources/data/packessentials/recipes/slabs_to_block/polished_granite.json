@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:polished_granite_slab"
+    }
+  ],
+  "result": {
+    "item": "minecraft:polished_granite_slab"
+  }
+}

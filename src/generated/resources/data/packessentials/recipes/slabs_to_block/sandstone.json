@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:sandstone_slab"
+    }
+  ],
+  "result": {
+    "item": "minecraft:sandstone_slab"
+  }
+}

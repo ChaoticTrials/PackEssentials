@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:nether_brick_slab"
+    }
+  ],
+  "result": {
+    "item": "minecraft:nether_brick_slab"
+  }
+}
