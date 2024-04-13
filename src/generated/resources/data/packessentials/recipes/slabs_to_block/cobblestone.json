@@ -4,9 +4,12 @@
   "ingredients": [
     {
       "item": "minecraft:cobblestone_slab"
+    },
+    {
+      "item": "minecraft:cobblestone_slab"
     }
   ],
   "result": {
-    "item": "minecraft:cobblestone_slab"
+    "item": "minecraft:cobblestone"
   }
 }

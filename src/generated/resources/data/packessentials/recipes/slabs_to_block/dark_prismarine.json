@@ -4,9 +4,12 @@
   "ingredients": [
     {
       "item": "minecraft:dark_prismarine_slab"
+    },
+    {
+      "item": "minecraft:dark_prismarine_slab"
     }
   ],
   "result": {
-    "item": "minecraft:dark_prismarine_slab"
+    "item": "minecraft:dark_prismarine"
   }
 }

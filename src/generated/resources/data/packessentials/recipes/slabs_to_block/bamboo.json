@@ -4,9 +4,12 @@
   "ingredients": [
     {
       "item": "minecraft:bamboo_slab"
+    },
+    {
+      "item": "minecraft:bamboo_slab"
     }
   ],
   "result": {
-    "item": "minecraft:bamboo_slab"
+    "item": "minecraft:bamboo"
   }
 }

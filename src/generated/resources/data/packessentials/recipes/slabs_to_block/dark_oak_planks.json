@@ -4,9 +4,12 @@
   "ingredients": [
     {
       "item": "minecraft:dark_oak_slab"
+    },
+    {
+      "item": "minecraft:dark_oak_slab"
     }
   ],
   "result": {
-    "item": "minecraft:dark_oak_slab"
+    "item": "minecraft:dark_oak_planks"
   }
 }

@@ -4,9 +4,12 @@
   "ingredients": [
     {
       "item": "minecraft:sandstone_slab"
+    },
+    {
+      "item": "minecraft:sandstone_slab"
     }
   ],
   "result": {
-    "item": "minecraft:sandstone_slab"
+    "item": "minecraft:sandstone"
   }
 }

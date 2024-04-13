@@ -4,9 +4,12 @@
   "ingredients": [
     {
       "item": "minecraft:brick_slab"
+    },
+    {
+      "item": "minecraft:brick_slab"
     }
   ],
   "result": {
-    "item": "minecraft:brick_slab"
+    "item": "minecraft:bricks"
   }
 }

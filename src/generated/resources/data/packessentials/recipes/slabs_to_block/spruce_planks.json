@@ -4,9 +4,12 @@
   "ingredients": [
     {
       "item": "minecraft:spruce_slab"
+    },
+    {
+      "item": "minecraft:spruce_slab"
     }
   ],
   "result": {
-    "item": "minecraft:spruce_slab"
+    "item": "minecraft:spruce_planks"
   }
 }

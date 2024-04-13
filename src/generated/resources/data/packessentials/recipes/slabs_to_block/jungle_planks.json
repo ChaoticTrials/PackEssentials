@@ -4,9 +4,12 @@
   "ingredients": [
     {
       "item": "minecraft:jungle_slab"
+    },
+    {
+      "item": "minecraft:jungle_slab"
     }
   ],
   "result": {
-    "item": "minecraft:jungle_slab"
+    "item": "minecraft:jungle_planks"
   }
 }

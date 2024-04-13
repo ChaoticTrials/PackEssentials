@@ -4,9 +4,12 @@
   "ingredients": [
     {
       "item": "minecraft:mangrove_slab"
+    },
+    {
+      "item": "minecraft:mangrove_slab"
     }
   ],
   "result": {
-    "item": "minecraft:mangrove_slab"
+    "item": "minecraft:mangrove_planks"
   }
 }

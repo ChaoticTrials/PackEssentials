@@ -131,7 +131,7 @@ public class RecipeProvider extends RecipeProviderBase implements CompressionExt
             }
 
             ResourceLocation id = this.loc(block);
-            this.shapeless(new ResourceLocation(id.getNamespace(), "slabs_to_block/" + id.getPath()), slab, slab);
+            this.shapeless(new ResourceLocation(id.getNamespace(), "slabs_to_block/" + id.getPath()), block, slab, slab);
         }
     }
 }

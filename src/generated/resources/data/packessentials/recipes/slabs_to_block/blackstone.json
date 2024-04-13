@@ -4,9 +4,12 @@
   "ingredients": [
     {
       "item": "minecraft:blackstone_slab"
+    },
+    {
+      "item": "minecraft:blackstone_slab"
     }
   ],
   "result": {
-    "item": "minecraft:blackstone_slab"
+    "item": "minecraft:blackstone"
   }
 }

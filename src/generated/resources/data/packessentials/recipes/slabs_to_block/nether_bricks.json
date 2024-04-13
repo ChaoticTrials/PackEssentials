@@ -4,9 +4,12 @@
   "ingredients": [
     {
       "item": "minecraft:nether_brick_slab"
+    },
+    {
+      "item": "minecraft:nether_brick_slab"
     }
   ],
   "result": {
-    "item": "minecraft:nether_brick_slab"
+    "item": "minecraft:nether_bricks"
   }
 }
