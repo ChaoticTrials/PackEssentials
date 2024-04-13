@@ -14,11 +14,14 @@ import net.minecraft.world.flag.FeatureElement;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FallingBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -27,11 +30,14 @@ import org.moddingx.libx.registration.Registerable;
 import org.moddingx.libx.registration.RegistrationContext;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.Set;
 import java.util.stream.Stream;
 
 public class SnadBlock extends FallingBlock implements Registerable, FeatureElement, CreativeTabItemProvider {
 
+    public static final int MAX_FERTILIZER_LEVEL = 3;
+    public static final IntegerProperty FERTILIZER = IntegerProperty.create("fertilizer", 0, MAX_FERTILIZER_LEVEL);
     protected final Set<Modpack> modpacks;
     private final Item item;
     private final int dustColor;
@@ -66,12 +72,27 @@ public class SnadBlock extends FallingBlock implements Registerable, FeatureElem
     public void randomTick(@Nonnull BlockState state, @Nonnull ServerLevel level, @Nonnull BlockPos pos, @Nonnull RandomSource random) {
         super.tick(state, level, pos, random);
         SnadBlock.growthBoost(level, pos, random);
+        SnadBlock.decreaseFertilizerLevel(level, pos, random);
+    }
+
+    @Override
+    protected void createBlockStateDefinition(@Nonnull StateDefinition.Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
+        builder.add(FERTILIZER);
+    }
+
+    @Nullable
+    @Override
+    public BlockState getStateForPlacement(@Nonnull BlockPlaceContext context) {
+        BlockState state = this.defaultBlockState();
+        state.setValue(FERTILIZER, 0);
+        return state;
     }
 
     private static void growthBoost(ServerLevel level, BlockPos pos, RandomSource random) {
-        Block plant = level.getBlockState(pos.above()).getBlock();
+        BlockState plant = level.getBlockState(pos.above());
 
-        if (!plant.defaultBlockState().is(ModTagProvider.SNAD_PLANT)) {
+        if (!plant.is(ModTagProvider.SNAD_PLANT)) {
             return;
         }
 
@@ -87,8 +108,8 @@ public class SnadBlock extends FallingBlock implements Registerable, FeatureElem
             }
 
             Block nextPlant = level.getBlockState(currentPos).getBlock();
-            if (plant.defaultBlockState() == nextPlant.defaultBlockState()) {
-                for (int i = 0; i < PackConfig.Snad.growthBooster; i++) {
+            if (plant.is(nextPlant)) {
+                for (int i = 0; i < PackConfig.Snad.growthBooster + level.getBlockState(pos).getValue(FERTILIZER); i++) {
                     //noinspection deprecation
                     nextPlant.randomTick(level.getBlockState(currentPos), level, currentPos, random);
                 }
@@ -98,6 +119,20 @@ public class SnadBlock extends FallingBlock implements Registerable, FeatureElem
 
             isSamePlant = false;
         }
+    }
+
+    private static void decreaseFertilizerLevel(ServerLevel level, BlockPos pos, RandomSource random) {
+        BlockState state = level.getBlockState(pos);
+        int fertilizer = state.getValue(FERTILIZER);
+        if (fertilizer > MAX_FERTILIZER_LEVEL || fertilizer < 0) {
+            throw new IllegalStateException("Invalid fertilizer value: " + fertilizer);
+        }
+
+        if (fertilizer == 0 || random.nextDouble() > PackConfig.Snad.decreaseFertilizationChance) {
+            return;
+        }
+
+        level.setBlock(pos, state.setValue(FERTILIZER, --fertilizer), Block.UPDATE_ALL_IMMEDIATE);
     }
 
     @Override

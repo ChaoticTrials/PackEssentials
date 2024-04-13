@@ -1,6 +1,7 @@
 package de.melanx.packessentials.data;
 
 import de.melanx.packessentials.blocks.ModBlocks;
+import de.melanx.packessentials.items.ModItems;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -29,9 +30,11 @@ public class RecipeProvider extends RecipeProviderBase implements CompressionExt
 
         this.snad(Ingredient.of(Tags.Items.SAND_COLORLESS), ModBlocks.snad);
         this.snad(Ingredient.of(Tags.Items.SAND_RED), ModBlocks.redSnad);
+
+        this.shaped(RecipeCategory.MISC, new ItemStack(ModItems.snadFertilizer, 3), "GGG", "GBG", "GGG", 'G', Ingredient.of(Items.GRASS, Items.FERN, Items.SEAGRASS), 'B', Items.BONE_MEAL);
     }
 
     private void snad(Ingredient base, ItemLike snad) {
-        this.shaped(RecipeCategory.BUILDING_BLOCKS, new ItemStack(snad, 2), "SB", "BS", 'B', Items.BONE_MEAL, 'S', base);
+        this.shaped(RecipeCategory.BUILDING_BLOCKS, new ItemStack(snad, 2), "SB", "BS", 'B', ModItems.snadFertilizer, 'S', base);
     }
 }

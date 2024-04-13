@@ -10,5 +10,12 @@
   "packessentials.block.compressed_6": "Sechsfach komprimierter %s",
   "packessentials.block.compressed_7": "Siebenfach komprimierter %s",
   "packessentials.block.compressed_8": "Achtfach komprimierter %s",
-  "packessentials.block.compressed_9": "Neunfach komprimierter %s"
+  "packessentials.block.compressed_9": "Neunfach komprimierter %s",
+
+  "item.packessentials.snad_fertilizer": "Snad Dünger",
+
+  "config.jade.plugin_packessentials.snad": "Snad",
+  "packessentials.compat.jade.snad.fertilizer_full": "Voll gedüngt",
+  "packessentials.compat.jade.snad.fertilizer_half": "Könnte etwas Dünger vertragen",
+  "packessentials.compat.jade.snad.fertilizer_empty": "Kein Dünger mehr, erwarte Wachstumsstörungen"
 }

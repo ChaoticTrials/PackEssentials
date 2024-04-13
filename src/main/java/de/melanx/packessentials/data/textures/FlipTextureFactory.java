@@ -36,6 +36,6 @@ public class FlipTextureFactory implements TextureFactory {
     @Override
     public void generate(BufferedImage image, Textures textures) {
         TextureHelper.copyImage(image, textures, this.source, 0, 0, 16, 16, 0, 0);
-        this.fileHelper.trackGenerated(flipped, TEXTURE);
+        this.fileHelper.trackGenerated(this.flipped, TEXTURE);
     }
 }

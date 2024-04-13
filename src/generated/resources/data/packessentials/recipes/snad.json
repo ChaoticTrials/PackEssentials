@@ -3,7 +3,7 @@
   "category": "building",
   "key": {
     "B": {
-      "item": "minecraft:bone_meal"
+      "item": "packessentials:snad_fertilizer"
     },
     "S": {
       "tag": "forge:sand/colorless"
