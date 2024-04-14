@@ -1,0 +1,55 @@
+package de.melanx.packessentials;
+
+import de.melanx.packessentials.data.ModTagProvider;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.ComposterBlock;
+import net.minecraft.world.level.block.state.BlockState;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CoreUtil {
+
+    public static void tickComposter(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        int compost = state.getValue(ComposterBlock.LEVEL);
+        if (compost < 7) {
+            return;
+        }
+
+        if (compost == 8) {
+            List<Block> blocks = new ArrayList<>();
+            //noinspection deprecation
+            for (Holder<Block> holder : BuiltInRegistries.BLOCK.getTagOrEmpty(ModTagProvider.COMPOSTER_GROWABLE)) {
+                blocks.add(holder.value());
+            }
+
+            for (int i = 0; i < 16; i++) {
+                if (random.nextDouble() < PackConfig.composterSpreading) {
+                    BlockPos offset = pos.offset(random.nextInt(5) - 2, (random.nextInt(3) - 1) * (random.nextInt(3) / 2), random.nextInt(5) - 2);
+                    if (!level.getBlockState(offset).isAir()) {
+                        continue;
+                    }
+
+                    BlockState belowOffset = level.getBlockState(offset.below());
+                    if (!belowOffset.is(BlockTags.DIRT)) {
+                        continue;
+                    }
+
+                    BlockState possiblePlant = blocks.get(random.nextInt(blocks.size())).defaultBlockState();
+                    if (possiblePlant.canSurvive(level, pos)) {
+                        level.setBlock(offset, possiblePlant, Block.UPDATE_ALL_IMMEDIATE);
+                    }
+                }
+            }
+        }
+
+        level.scheduleTick(pos, state.getBlock(), random.nextInt(Level.TICKS_PER_DAY / 2));
+    }
+}

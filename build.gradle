@@ -1,8 +1,9 @@
 buildscript {
-    apply from: 'https://moddingx.github.io/ModUtils/experimental/buildscript.gradle', to: buildscript
+    apply from: 'https://moddingx.github.io/ModUtils/v5/buildscript.gradle', to: buildscript
 }
 
-apply from: 'https://moddingx.github.io/ModUtils/experimental/mod.gradle'
+apply from: 'https://moddingx.github.io/ModUtils/v5/mod.gradle'
+apply plugin: 'org.moddingx.modgradle.coremods'
 apply plugin: 'org.moddingx.modgradle.cursedep'
 
 repositories {
@@ -17,6 +18,8 @@ dependencies {
 
     implementation fg.deobf("org.moddingx:LibX:1.20.1-5.0.14")
     implementation fg.deobf("mezz.jei:jei-1.20.1-forge:15.3.0.4")
+
+    coremods 'org.moddingx:CoreModTypes:5.0.2-2'
 
     implementation curse.mod(324717, 5072729) // Jade 1.20.1-forge-11.8.0
 }

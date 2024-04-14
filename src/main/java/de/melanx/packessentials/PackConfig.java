@@ -12,6 +12,10 @@ public class PackConfig {
     @Config("The modpack you want to load content for. You should not edit this if you downloaded an existing modpack!")
     public static Modpack modpack = Modpack.CAVESTONE;
 
+    @Config("The chance for putting a crop near a full composter")
+    @DoubleRange(min = 0, max = 1)
+    public static double composterSpreading = 0.05;
+
     @Group
     public static class Snad {
 

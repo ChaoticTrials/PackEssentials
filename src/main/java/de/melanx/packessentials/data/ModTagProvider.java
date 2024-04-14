@@ -17,10 +17,12 @@ public class ModTagProvider extends CommonTagsProviderBase {
     }
 
     public static final TagKey<Block> SNAD_PLANT = TagKey.create(Registries.BLOCK, PackEssentials.getInstance().resource("snad_plant"));
+    public static final TagKey<Block> COMPOSTER_GROWABLE = TagKey.create(Registries.BLOCK, PackEssentials.getInstance().resource("composter_growable"));
 
     @Override
     public void setup() {
         this.block(SNAD_PLANT).add(Blocks.CACTUS).add(Blocks.SUGAR_CANE).add(Blocks.BAMBOO).add(Blocks.BAMBOO_SAPLING);
+        this.block(COMPOSTER_GROWABLE).add(Blocks.SWEET_BERRY_BUSH).addTag(BlockTags.CROPS);
     }
 
     @Override
