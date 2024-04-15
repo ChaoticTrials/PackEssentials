@@ -30,21 +30,27 @@ public class CoreUtil {
                 blocks.add(holder.value());
             }
 
-            for (int i = 0; i < 16; i++) {
-                if (random.nextDouble() < PackConfig.composterSpreading) {
-                    BlockPos offset = pos.offset(random.nextInt(5) - 2, (random.nextInt(3) - 1) * (random.nextInt(3) / 2), random.nextInt(5) - 2);
-                    if (!level.getBlockState(offset).isAir()) {
-                        continue;
-                    }
+            if (!blocks.isEmpty()) {
+                for (int i = 0; i < 16; i++) {
+                    if (random.nextDouble() < PackConfig.composterSpreading) {
+                        BlockPos offset = pos.offset(random.nextInt(5) - 2, (random.nextInt(3) - 1) * (random.nextInt(3) / 2), random.nextInt(5) - 2);
+                        BlockState possiblePlant = blocks.get(random.nextInt(blocks.size())).defaultBlockState();
+                        if (!possiblePlant.getFluidState().isEmpty() && !possiblePlant.getFluidState().is(level.getFluidState(offset).getType())) {
+                            continue;
+                        }
 
-                    BlockState belowOffset = level.getBlockState(offset.below());
-                    if (!belowOffset.is(BlockTags.DIRT)) {
-                        continue;
-                    }
+                        if (possiblePlant.getFluidState().isEmpty() && !level.getBlockState(offset).isAir()) {
+                            continue;
+                        }
 
-                    BlockState possiblePlant = blocks.get(random.nextInt(blocks.size())).defaultBlockState();
-                    if (possiblePlant.canSurvive(level, pos)) {
-                        level.setBlock(offset, possiblePlant, Block.UPDATE_ALL_IMMEDIATE);
+                        BlockState belowOffset = level.getBlockState(offset.below());
+                        if (!belowOffset.is(BlockTags.DIRT)) {
+                            continue;
+                        }
+
+                        if (possiblePlant.canSurvive(level, offset)) {
+                            level.setBlock(offset, possiblePlant, Block.UPDATE_ALL_IMMEDIATE);
+                        }
                     }
                 }
             }

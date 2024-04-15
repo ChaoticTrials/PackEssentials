@@ -22,7 +22,7 @@ public class ModTagProvider extends CommonTagsProviderBase {
     @Override
     public void setup() {
         this.block(SNAD_PLANT).add(Blocks.CACTUS).add(Blocks.SUGAR_CANE).add(Blocks.BAMBOO).add(Blocks.BAMBOO_SAPLING);
-        this.block(COMPOSTER_GROWABLE).add(Blocks.SWEET_BERRY_BUSH).addTag(BlockTags.CROPS);
+        this.block(COMPOSTER_GROWABLE).add(Blocks.SWEET_BERRY_BUSH).addTag(BlockTags.CROPS).add(Blocks.KELP, Blocks.SEAGRASS);
     }
 
     @Override
