@@ -9,8 +9,10 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +22,7 @@ public class CoreUtil {
     public static void tickComposter(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         int compost = state.getValue(ComposterBlock.LEVEL);
         if (compost < 7) {
+            level.getBlockTicks().clearArea(new BoundingBox(pos));
             return;
         }
 
@@ -44,7 +47,7 @@ public class CoreUtil {
                         }
 
                         BlockState belowOffset = level.getBlockState(offset.below());
-                        if (!belowOffset.is(BlockTags.DIRT)) {
+                        if (!belowOffset.is(BlockTags.DIRT) && !belowOffset.is(Blocks.FARMLAND)) {
                             continue;
                         }
 
@@ -56,6 +59,10 @@ public class CoreUtil {
             }
         }
 
-        level.scheduleTick(pos, state.getBlock(), random.nextInt(Level.TICKS_PER_DAY / 2));
+        if (!level.getBlockTicks().hasScheduledTick(pos, state.getBlock())) {
+            level.scheduleTick(pos, state.getBlock(), random.nextInt(Level.TICKS_PER_DAY / 2));
+        }
     }
 }
+
+// todo on destroy, on empty
