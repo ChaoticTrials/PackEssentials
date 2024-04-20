@@ -1,5 +1,6 @@
-package de.melanx.packessentials;
+package de.melanx.packessentials.mixin;
 
+import de.melanx.packessentials.PackConfig;
 import de.melanx.packessentials.data.ModTagProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -7,19 +8,51 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CoreUtil {
+@Mixin(ComposterBlock.class)
+public abstract class MixinComposterBlock {
 
-    public static void tickComposter(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    @Inject(
+            method = "empty",
+            at = @At("RETURN")
+    )
+    private static void composterEmpty(Entity entity, BlockState state, LevelAccessor levelAccessor, BlockPos pos, CallbackInfoReturnable<BlockState> cir) {
+        if (levelAccessor instanceof ServerLevel level) {
+            level.getBlockTicks().clearArea(new BoundingBox(pos));
+        }
+    }
+
+    @Inject(
+            method = "onPlace",
+            at = @At("HEAD")
+    )
+    public void composterOnPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving, CallbackInfo ci) {
+        if (level instanceof ServerLevel serverLevel) {
+            serverLevel.getBlockTicks().clearArea(new BoundingBox(pos));
+        }
+    }
+
+    @Inject(
+            method = "tick",
+            at = @At("RETURN")
+    )
+    public void composterTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, CallbackInfo ci) {
         int compost = state.getValue(ComposterBlock.LEVEL);
         if (compost < 7) {
             level.getBlockTicks().clearArea(new BoundingBox(pos));
@@ -64,5 +97,3 @@ public class CoreUtil {
         }
     }
 }
-
-// todo on destroy, on empty
