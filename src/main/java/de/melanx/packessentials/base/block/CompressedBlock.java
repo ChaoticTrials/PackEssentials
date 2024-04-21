@@ -1,8 +1,8 @@
-package de.melanx.packessentials.blocks;
+package de.melanx.packessentials.base.block;
 
 import de.melanx.packessentials.Modpack;
 import de.melanx.packessentials.PackEssentials;
-import de.melanx.packessentials.items.PackBlockItem;
+import de.melanx.packessentials.base.item.PackBlockItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;

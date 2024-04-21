@@ -1,6 +1,10 @@
 {
   "block.packessentials.snad": "Snad",
   "block.packessentials.red_snad": "Red Snad",
+  "block.packessentials.infested_cobbled_deepslate": "Infested Cobbled Deepslate",
+  "block.packessentials.infested_deepslate_bricks": "Infested Deepslate Bricks",
+  "block.packessentials.infested_deepslate_tiles": "Infested Deepslate Tiles",
+  "block.packessentials.infested_nether_bricks": "Infested Nether Bricks",
 
   "packessentials.block.compressed.tooltip": "%sx %s",
 

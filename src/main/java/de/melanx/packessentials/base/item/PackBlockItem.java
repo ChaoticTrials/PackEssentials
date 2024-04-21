@@ -1,4 +1,4 @@
-package de.melanx.packessentials.items;
+package de.melanx.packessentials.base.item;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.flag.FeatureFlagSet;

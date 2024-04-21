@@ -2,8 +2,8 @@ package de.melanx.packessentials.blocks;
 
 import de.melanx.packessentials.Modpack;
 import de.melanx.packessentials.PackConfig;
+import de.melanx.packessentials.base.item.PackBlockItem;
 import de.melanx.packessentials.data.ModTagProvider;
-import de.melanx.packessentials.items.PackBlockItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;

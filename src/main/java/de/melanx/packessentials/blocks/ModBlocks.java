@@ -2,6 +2,8 @@ package de.melanx.packessentials.blocks;
 
 import de.melanx.packessentials.Modpack;
 import de.melanx.packessentials.PackEssentials;
+import de.melanx.packessentials.base.InfestedBlockBase;
+import de.melanx.packessentials.base.block.CompressedBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -28,4 +30,9 @@ public class ModBlocks {
 
     public static final Block snad = new SnadBlock(0xDB7093, BlockBehaviour.Properties.copy(Blocks.SAND), Modpack.CAVESTONE);
     public static final Block redSnad = new SnadBlock(0xA92B39, BlockBehaviour.Properties.copy(Blocks.RED_SAND), Modpack.CAVESTONE);
+
+    public static final Block infestedCobbledDeepslate = new InfestedBlockBase(PackEssentials.getInstance(), Blocks.COBBLED_DEEPSLATE, Modpack.CAVESTONE);
+    public static final Block infestedDeepslateBricks = new InfestedBlockBase(PackEssentials.getInstance(), Blocks.DEEPSLATE_BRICKS, Modpack.CAVESTONE);
+    public static final Block infestedDeepslateTiles = new InfestedBlockBase(PackEssentials.getInstance(), Blocks.DEEPSLATE_TILES, Modpack.CAVESTONE);
+    public static final Block infestedNetherBricks = new InfestedBlockBase(PackEssentials.getInstance(), Blocks.NETHER_BRICKS, Modpack.CAVESTONE);
 }

@@ -1,18 +1,15 @@
-package de.melanx.packessentials.blocks;
+package de.melanx.packessentials.base.block;
 
 import de.melanx.packessentials.Modpack;
-import de.melanx.packessentials.PackConfig;
-import net.minecraft.world.flag.FeatureElement;
-import net.minecraft.world.flag.FeatureFlagSet;
+import de.melanx.packessentials.base.PackElement;
 import net.minecraft.world.item.Item;
 import org.moddingx.libx.base.BlockBase;
 import org.moddingx.libx.mod.ModX;
 
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Set;
 
-public class PackBlockBase extends BlockBase implements FeatureElement {
+public class PackBlockBase extends BlockBase implements PackElement {
 
     protected final Set<Modpack> modpacks;
 
@@ -26,7 +23,7 @@ public class PackBlockBase extends BlockBase implements FeatureElement {
     }
 
     @Override
-    public boolean isEnabled(@Nonnull FeatureFlagSet enabledFeatures) {
-        return this.modpacks.contains(PackConfig.modpack);
+    public Set<Modpack> getModpacks() {
+        return this.modpacks;
     }
 }

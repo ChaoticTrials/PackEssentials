@@ -13,6 +13,10 @@
     "packessentials:double_compressed_diorite",
     "packessentials:double_compressed_granite",
     "packessentials:double_compressed_netherrack",
-    "packessentials:double_compressed_tuff"
+    "packessentials:double_compressed_tuff",
+    "packessentials:infested_cobbled_deepslate",
+    "packessentials:infested_deepslate_bricks",
+    "packessentials:infested_deepslate_tiles",
+    "packessentials:infested_nether_bricks"
   ]
 }

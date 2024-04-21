@@ -1,6 +1,10 @@
 {
   "block.packessentials.snad": "Snad",
   "block.packessentials.red_snad": "Roter Snad",
+  "block.packessentials.infested_cobbled_deepslate": "Befallener Bruchtiefenschiefer",
+  "block.packessentials.infested_deepslate_bricks": "Befallene Tiefenschieferziegel",
+  "block.packessentials.infested_deepslate_tiles": "Befallene Tiefenschieferfliesen",
+  "block.packessentials.infested_nether_bricks": "Befallene Netherziegel",
 
   "packessentials.block.compressed_1": "Komprimierter %s",
   "packessentials.block.compressed_2": "Doppelt komprimierter %s",

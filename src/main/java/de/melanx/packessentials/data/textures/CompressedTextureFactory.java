@@ -1,7 +1,7 @@
 package de.melanx.packessentials.data.textures;
 
 import de.melanx.packessentials.PackEssentials;
-import de.melanx.packessentials.blocks.CompressedBlock;
+import de.melanx.packessentials.base.block.CompressedBlock;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraftforge.common.data.ExistingFileHelper;

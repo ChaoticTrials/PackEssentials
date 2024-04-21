@@ -1,6 +1,7 @@
 package de.melanx.packessentials.items;
 
 import de.melanx.packessentials.Modpack;
+import de.melanx.packessentials.base.item.PackItemBase;
 import de.melanx.packessentials.blocks.ModBlocks;
 import de.melanx.packessentials.blocks.SnadBlock;
 import net.minecraft.core.BlockPos;
