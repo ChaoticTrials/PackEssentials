@@ -1,5 +1,6 @@
 package de.melanx.packessentials.mixin;
 
+import de.melanx.packessentials.Features;
 import de.melanx.packessentials.PackConfig;
 import de.melanx.packessentials.data.ModTagProvider;
 import net.minecraft.core.BlockPos;
@@ -53,6 +54,10 @@ public abstract class MixinComposterBlock {
             at = @At("RETURN")
     )
     public void composterTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, CallbackInfo ci) {
+        if (!Features.isEnabled(Features.COMPOSTER)) {
+            return;
+        }
+        
         int compost = state.getValue(ComposterBlock.LEVEL);
         if (compost < 7) {
             level.getBlockTicks().clearArea(new BoundingBox(pos));
