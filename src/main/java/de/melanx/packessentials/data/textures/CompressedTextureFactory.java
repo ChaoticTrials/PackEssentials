@@ -72,20 +72,4 @@ public class CompressedTextureFactory implements TextureFactory {
 
         return dest;
     }
-
-//    private BufferedImage setDarker(BufferedImage image) {
-//        BufferedImage dest = new BufferedImage(image.getWidth(), image.getHeight(), image.getType());
-//        for (int x = 0; x < image.getWidth(); x++) {
-//            for (int y = 0; y < image.getHeight(); y++) {
-//                Color color = new Color(image.getRGB(x, y));
-//                int r = (int) (color.getRed() * (1 - (float) this.compressionLevel / CompressedBlock.MAX_COMPRESSION));
-//                int g = (int) (color.getGreen() * (1 - (float) this.compressionLevel / CompressedBlock.MAX_COMPRESSION));
-//                int b = (int) (color.getBlue() * (1 - (float) this.compressionLevel / CompressedBlock.MAX_COMPRESSION));
-//
-//                dest.setRGB(x, y, new Color(r, g, b).getRGB());
-//            }
-//        }
-//
-//        return dest;
-//    }
 }

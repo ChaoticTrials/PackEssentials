@@ -19,5 +19,5 @@
   "config.jade.plugin_packessentials.snad": "Snad",
   "packessentials.compat.jade.snad.fertilizer_full": "Fully fertilized",
   "packessentials.compat.jade.snad.fertilizer_half": "Could take some fertilizer",
-  "packessentials.compat.jade.snad.fertilizer_empty": "No fertilizer left, except grow delays"
+  "packessentials.compat.jade.snad.fertilizer_empty": "No fertilizer left, expect grow delays"
 }
