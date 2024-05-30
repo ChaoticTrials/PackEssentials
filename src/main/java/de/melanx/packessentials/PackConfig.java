@@ -16,6 +16,11 @@ public class PackConfig {
     @DoubleRange(min = 0, max = 1)
     public static double composterSpreading = 0.05;
 
+    @Config({"The chance for an open fridge to generate some snow layers each second",
+            "Requires 'Cooking for Blockheads' to be loaded"})
+    @DoubleRange(min = 0, max = 1)
+    public static double snowChance = 0.001;
+
     @Group
     public static class Snad {
 
