@@ -20,10 +20,10 @@ jobs:
 
       - name: Add secrets
         run: |
-          echo "curse_auth=${{ secrets.CURSEFORGE_TOKEN }}" >> secrets.properties
-          echo "modrinth_auth=${{ secrets.MODRINTH_TOKEN }}" >> secrets.properties
-          echo "mavenUsername=${{ secrets.MAVEN_USERNAME }}" >> gradle.properties
-          echo "mavenPassword=${{ secrets.MAVEN_PASSWORD }}" >> gradle.properties
+          echo curse_auth=${{ secrets.CURSEFORGE_TOKEN }} >> secrets.properties
+          echo modrinth_auth=${{ secrets.MODRINTH_TOKEN }} >> secrets.properties
+          echo mavenUsername=${{ secrets.MAVEN_USERNAME }} >> gradle.properties
+          echo mavenPassword=${{ secrets.MAVEN_PASSWORD }} >> gradle.properties
 
       - name: Make gradlew executable
         run: chmod +x ./gradlew
