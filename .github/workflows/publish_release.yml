@@ -18,13 +18,18 @@ jobs:
           java-version: 17
           distribution: temurin
 
+      - name: Add secrets
+        run: |
+          echo "curse_auth=${{ secrets.CURSEFORGE_TOKEN }}" >> secrets.properties
+          echo "modrinth_auth=${{ secrets.MODRINTH_TOKEN }}" >> secrets.properties
+          echo "mavenUsername=${{ secrets.MAVEN_USERNAME }}" >> gradle.properties
+          echo "mavenPassword=${{ secrets.MAVEN_PASSWORD }}" >> gradle.properties
+
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
       - name: Build
-        run: ./gradlew build publish curseforge modrinth -PmavenUsername=${{ secrets.MAVEN_USERNAME }} -PmavenPassword=${{ secrets.MAVEN_PASSWORD }}
+        run: ./gradlew build publish curseforge modrinth
         env:
           GIT_COMMIT: ${{ github.sha }}
           GIT_PREVIOUS_COMMIT: ${{ github.event.before }}
-          CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
-          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
