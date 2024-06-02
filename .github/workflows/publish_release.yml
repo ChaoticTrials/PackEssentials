@@ -1,0 +1,32 @@
+name: Generate Changelog
+on:
+  push:
+    branches:
+      - '**' # for all branches
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: 17
+          distribution: temurin
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Build
+        run: ./gradlew build publish curseforge modrinth
+        env:
+          GIT_COMMIT: ${{ github.sha }}
+          GIT_PREVIOUS_COMMIT: ${{ github.event.before }}
+          CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+          mavenUsername: ${{ secrets.MAVEN_USERNAME }}
+          mavenPassword: ${{ secrets.MAVEN_PASSWORD }}

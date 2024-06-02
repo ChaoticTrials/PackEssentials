@@ -1,0 +1,8 @@
+{
+  "values": [
+    "#packessentials:buried_mobs/common",
+    "#packessentials:buried_mobs/uncommon",
+    "#packessentials:buried_mobs/rare",
+    "#packessentials:buried_mobs/epic"
+  ]
+}

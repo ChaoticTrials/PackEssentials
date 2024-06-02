@@ -33,4 +33,16 @@ public class PackConfig {
         @DoubleRange(min = 0, max = 1)
         public static double decreaseFertilizationChance = 0.3;
     }
+
+    @Group
+    public static class BuriedMobs {
+
+        @Config
+        @DoubleRange(min = 0, max = 1)
+        public static double minChance = 0.05;
+
+        @Config
+        @DoubleRange(min = 0, max = 1)
+        public static double maxChance = 0.1;
+    }
 }

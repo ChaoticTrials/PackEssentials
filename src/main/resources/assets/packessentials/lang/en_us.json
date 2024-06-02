@@ -15,9 +15,13 @@
   "packessentials.block.compressed_5": "Quintuple Compressed %s",
 
   "item.packessentials.snad_fertilizer": "Snad Fertilizer",
+  "item.packessentials.buried_mob": "Buried Mob",
 
   "config.jade.plugin_packessentials.snad": "Snad",
   "packessentials.compat.jade.snad.fertilizer_full": "Fully fertilized",
   "packessentials.compat.jade.snad.fertilizer_half": "Could take some fertilizer",
-  "packessentials.compat.jade.snad.fertilizer_empty": "No fertilizer left, expect grow delays"
+  "packessentials.compat.jade.snad.fertilizer_empty": "No fertilizer left, expect grow delays",
+
+  "tooltip.packessentials.entity_type": "Entity Type: ",
+  "tooltip.packessentials.chance": "Chance: "
 }

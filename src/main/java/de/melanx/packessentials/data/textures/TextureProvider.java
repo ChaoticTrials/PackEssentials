@@ -27,6 +27,11 @@ public class TextureProvider extends TextureProviderBase {
         this.texture(snad, new FlipTextureFactory(snad, sand, this.fileHelper));
         this.texture(redSnad, new FlipTextureFactory(redSnad, redSand, this.fileHelper));
 
+        ResourceLocation bone = new ResourceLocation("minecraft", "item/bone");
+        ResourceLocation flippedBone = PackEssentials.getInstance().resource("item/flipped_bone");
+
+        this.texture(flippedBone, new FlipTextureFactory(flippedBone, bone, this.fileHelper));
+
         ForgeRegistries.BLOCKS.getValues().stream()
                 .filter(block -> ForgeRegistries.BLOCKS.getKey(block).getNamespace().equals(PackEssentials.getInstance().modid))
                 .filter(block -> block instanceof CompressedBlock)

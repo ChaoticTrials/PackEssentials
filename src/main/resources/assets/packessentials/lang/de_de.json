@@ -17,5 +17,8 @@
   "config.jade.plugin_packessentials.snad": "Snad",
   "packessentials.compat.jade.snad.fertilizer_full": "Voll gedüngt",
   "packessentials.compat.jade.snad.fertilizer_half": "Könnte etwas Dünger vertragen",
-  "packessentials.compat.jade.snad.fertilizer_empty": "Kein Dünger mehr, erwarte Wachstumsstörungen"
+  "packessentials.compat.jade.snad.fertilizer_empty": "Kein Dünger mehr, erwarte Wachstumsstörungen",
+
+  "tooltip.packessentials.entity_type": "Entity Typ: ",
+  "tooltip.packessentials.chance": "Chance: "
 }
