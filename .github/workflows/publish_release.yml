@@ -1,4 +1,4 @@
-name: Generate Changelog
+name: Build version
 on:
   push:
     branches:
@@ -22,11 +22,9 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Build
-        run: ./gradlew build publish curseforge modrinth
+        run: ./gradlew build publish curseforge modrinth -PmavenUsername=${{ secrets.MAVEN_USERNAME }} -PmavenPassword=${{ secrets.MAVEN_PASSWORD }}
         env:
           GIT_COMMIT: ${{ github.sha }}
           GIT_PREVIOUS_COMMIT: ${{ github.event.before }}
           CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
-          mavenUsername: ${{ secrets.MAVEN_USERNAME }}
-          mavenPassword: ${{ secrets.MAVEN_PASSWORD }}
