@@ -6,13 +6,17 @@
   "block.packessentials.infested_deepslate_tiles": "Befallene Tiefenschieferfliesen",
   "block.packessentials.infested_nether_bricks": "Befallene Netherziegel",
 
+  "packessentials.block.compressed.tooltip": "%sx %s",
+
   "packessentials.block.compressed_1": "Komprimierter %s",
   "packessentials.block.compressed_2": "Doppelt komprimierter %s",
   "packessentials.block.compressed_3": "Dreifach komprimierter %s",
   "packessentials.block.compressed_4": "Vierfach komprimierter %s",
   "packessentials.block.compressed_5": "Fünffach komprimierter %s",
 
+  "item.packessentials.ancient_brush": "Antiker Pinsel",
   "item.packessentials.snad_fertilizer": "Snad Dünger",
+  "item.packessentials.buried_mob": "Begrabener Mob",
 
   "config.jade.plugin_packessentials.snad": "Snad",
   "packessentials.compat.jade.snad.fertilizer_full": "Voll gedüngt",
