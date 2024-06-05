@@ -9,7 +9,7 @@ import org.moddingx.libx.annotation.registration.RegisterClass;
 @RegisterClass(registry = "ITEMS")
 public class ModItems {
 
-    public static final Item ancientBrush = new AncientBrushItem(PackEssentials.getInstance(), new Item.Properties(), Modpack.CAVESTONE);
+    public static final Item ancientBrush = new AncientBrushItem(PackEssentials.getInstance(), new Item.Properties().durability(32), Modpack.CAVESTONE);
     public static final Item snadFertilizer = new SnadFertilizerItem(PackEssentials.getInstance(), new Item.Properties(), Modpack.CAVESTONE);
 
     public static final Item buriedAllay = new BuriedMobItem<>(PackEssentials.getInstance(), new Item.Properties(), EntityType.ALLAY, Modpack.CAVESTONE);
