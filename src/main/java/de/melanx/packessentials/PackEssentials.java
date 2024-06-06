@@ -1,15 +1,13 @@
 package de.melanx.packessentials;
 
+import de.melanx.packessentials.client.ClientPackEssentials;
 import de.melanx.packessentials.data.*;
 import de.melanx.packessentials.data.textures.TextureProvider;
-import de.melanx.packessentials.items.BuriedMobItem;
-import net.minecraft.world.item.Item;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.moddingx.libx.creativetab.CreativeTabX;
 import org.moddingx.libx.datagen.DatagenSystem;
 import org.moddingx.libx.mod.ModXRegistration;
@@ -24,7 +22,7 @@ public final class PackEssentials extends ModXRegistration {
         instance = this;
         creativeTab = new PackTab(this);
 
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerItemColor);
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> ClientPackEssentials::new);
 
         DatagenSystem.create(this, system -> {
             system.addDataProvider(TextureProvider::new);
@@ -52,13 +50,5 @@ public final class PackEssentials extends ModXRegistration {
 
     public static CreativeTabX getCreativeTab() {
         return creativeTab;
-    }
-
-    private void registerItemColor(RegisterColorHandlersEvent.Item event) {
-        Item[] items = ForgeRegistries.ITEMS.getValues().stream()
-                .filter(item -> item instanceof BuriedMobItem<?>)
-                .toArray(Item[]::new);
-        //noinspection deprecation
-        event.getItemColors().register(((stack, tintIndex) -> 0xFF000000 | ((BuriedMobItem<?>) stack.getItem()).spawnEggItem.get().getColor(tintIndex)), items);
     }
 }
