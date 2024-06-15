@@ -21,6 +21,21 @@ public class PackConfig {
     @DoubleRange(min = 0, max = 1)
     public static double snowChance = 0.001;
 
+    @Group("Remove annoying toasts")
+    public static class Toasts {
+
+        @Config
+        public static boolean disableAdvancementToasts = false;
+
+        @Config
+        public static boolean disableRecipeToasts = false;
+
+        @Config
+        public static boolean disableSystemToasts = false;
+
+        @Config
+        public static boolean disableTutorialToasts = true;
+    }
     @Group
     public static class Snad {
 
