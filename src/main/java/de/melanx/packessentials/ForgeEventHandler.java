@@ -4,11 +4,17 @@ import net.minecraft.client.gui.components.toasts.*;
 import net.minecraftforge.client.event.ToastAddEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
+import javax.annotation.Nullable;
+
 public class ForgeEventHandler {
 
     @SubscribeEvent
     public void onToastAdd(ToastAddEvent event) {
         VanillaToastType toastType = VanillaToastType.getType(event.getToast());
+        if (toastType == null) {
+            return;
+        }
+
         switch (toastType) {
             case ADVANCEMENT -> event.setCanceled(PackConfig.Toasts.disableAdvancementToasts);
             case RECIPE -> event.setCanceled(PackConfig.Toasts.disableRecipeToasts);
@@ -23,6 +29,7 @@ public class ForgeEventHandler {
         SYSTEM,
         TUTORIAL;
 
+        @Nullable
         public static VanillaToastType getType(Toast toast) {
             if (toast instanceof AdvancementToast) {
                 return ADVANCEMENT;
