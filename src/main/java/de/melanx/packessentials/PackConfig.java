@@ -36,6 +36,7 @@ public class PackConfig {
         @Config
         public static boolean disableTutorialToasts = true;
     }
+
     @Group
     public static class Snad {
 
@@ -46,7 +47,7 @@ public class PackConfig {
 
         @Config("The chance to decrease the fertilization of Snad")
         @DoubleRange(min = 0, max = 1)
-        public static double decreaseFertilizationChance = 0.3;
+        public static double decreaseFertilizationChance = 0.05;
     }
 
     @Group
