@@ -1,13 +1,13 @@
 modLoader="javafml"
 loaderVersion="[47,)"
 license="The Apache License, Version 2.0"
-issueTrackerURL="https://github.com/MelanX/PackEssentials/issues"
+issueTrackerURL="https://github.com/ChaoticTrials/PackEssentials/issues"
 
 [[mods]]
 modId="packessentials"
 version="${version}"
 displayName="Pack Essentials"
-displayURL = "https://melanx.github.io/Mod-Wikis/"
+displayURL = "https://wiki.chaotictrials.de/packessentials"
 updateJSONURL="https://assets.melanx.de/updates/pack-essentials.json"
 authors="MelanX"
 description='''

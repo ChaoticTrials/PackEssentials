@@ -4,7 +4,9 @@
   "refmap": "packessentials.refmap.json",
   "package": "de.melanx.packessentials.mixin",
   "minVersion": "0.8",
-  "client": [],
+  "client": [
+    "MixinMinecraft"
+  ],
   "server": [],
   "mixins": [
     "MixinComposterBlock",

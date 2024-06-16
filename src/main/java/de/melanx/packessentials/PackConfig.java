@@ -21,6 +21,11 @@ public class PackConfig {
     @DoubleRange(min = 0, max = 1)
     public static double snowChance = 0.001;
 
+    @Config({"The gui scale set for the title screen. Mainly used for custom menu mods to keep configuration.",
+            "If set to 0, it will use the value from options.txt"})
+    @IntRange(min = 0, max = 4)
+    public static int titleScreenScale = 0;
+
     @Group("Remove annoying toasts")
     public static class Toasts {
 

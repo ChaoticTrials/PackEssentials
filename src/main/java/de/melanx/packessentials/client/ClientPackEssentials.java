@@ -3,6 +3,7 @@ package de.melanx.packessentials.client;
 import de.melanx.packessentials.items.BuriedMobItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -10,6 +11,7 @@ public class ClientPackEssentials {
 
     public ClientPackEssentials() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerItemColor);
+        MinecraftForge.EVENT_BUS.register(new ForgeEventHandlerClient());
     }
 
     private void registerItemColor(RegisterColorHandlersEvent.Item event) {
