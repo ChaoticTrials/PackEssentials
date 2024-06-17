@@ -4,7 +4,6 @@ import de.melanx.packessentials.client.ClientPackEssentials;
 import de.melanx.packessentials.data.*;
 import de.melanx.packessentials.data.textures.TextureProvider;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -22,8 +21,6 @@ public final class PackEssentials extends ModXRegistration {
     public PackEssentials() {
         instance = this;
         creativeTab = new PackTab(this);
-
-        MinecraftForge.EVENT_BUS.register(new ForgeEventHandler());
 
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> ClientPackEssentials::new);
 
