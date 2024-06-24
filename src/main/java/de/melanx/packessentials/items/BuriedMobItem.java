@@ -63,7 +63,7 @@ public class BuriedMobItem<T extends EntityType<?>> extends ItemBase implements 
             return InteractionResult.SUCCESS;
         }
 
-        return InteractionResult.PASS;
+        return InteractionResult.FAIL;
     }
 
     @Nonnull
