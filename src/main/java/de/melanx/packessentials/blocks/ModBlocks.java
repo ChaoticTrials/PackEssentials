@@ -13,6 +13,8 @@ import org.moddingx.libx.annotation.registration.RegisterClass;
 public class ModBlocks {
 
     public static final CompressedBlock compressedCobblestone = new CompressedBlock(PackEssentials.getInstance(), Blocks.COBBLESTONE, 1, Modpack.CAVESTONE);
+    public static final CompressedBlock compressedGravel = new CompressedBlock(PackEssentials.getInstance(), Blocks.GRAVEL, 1, Modpack.CAVESTONE);
+    public static final CompressedBlock compressedSand = new CompressedBlock(PackEssentials.getInstance(), Blocks.SAND, 1, Modpack.CAVESTONE);
     public static final CompressedBlock compressedAndesite = new CompressedBlock(PackEssentials.getInstance(), Blocks.ANDESITE, 1, Modpack.CAVESTONE);
     public static final CompressedBlock compressedDiorite = new CompressedBlock(PackEssentials.getInstance(), Blocks.DIORITE, 1, Modpack.CAVESTONE);
     public static final CompressedBlock compressedGranite = new CompressedBlock(PackEssentials.getInstance(), Blocks.GRANITE, 1, Modpack.CAVESTONE);
@@ -21,6 +23,8 @@ public class ModBlocks {
     public static final CompressedBlock compressedNetherrack = new CompressedBlock(PackEssentials.getInstance(), Blocks.NETHERRACK, 1, Modpack.CAVESTONE);
 
     public static final CompressedBlock doubleCompressedCobblestone = new CompressedBlock(PackEssentials.getInstance(), Blocks.COBBLESTONE, 2, Modpack.CAVESTONE);
+    public static final CompressedBlock doubleCompressedGravel = new CompressedBlock(PackEssentials.getInstance(), Blocks.GRAVEL, 2, Modpack.CAVESTONE);
+    public static final CompressedBlock doubleCompressedSand = new CompressedBlock(PackEssentials.getInstance(), Blocks.SAND, 2, Modpack.CAVESTONE);
     public static final CompressedBlock doubleCompressedAndesite = new CompressedBlock(PackEssentials.getInstance(), Blocks.ANDESITE, 2, Modpack.CAVESTONE);
     public static final CompressedBlock doubleCompressedDiorite = new CompressedBlock(PackEssentials.getInstance(), Blocks.DIORITE, 2, Modpack.CAVESTONE);
     public static final CompressedBlock doubleCompressedGranite = new CompressedBlock(PackEssentials.getInstance(), Blocks.GRANITE, 2, Modpack.CAVESTONE);

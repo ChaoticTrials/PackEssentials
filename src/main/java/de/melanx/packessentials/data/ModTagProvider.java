@@ -1,6 +1,7 @@
 package de.melanx.packessentials.data;
 
 import de.melanx.packessentials.PackEssentials;
+import de.melanx.packessentials.base.block.CompressedBlock;
 import de.melanx.packessentials.blocks.SnadBlock;
 import de.melanx.packessentials.items.ModItems;
 import net.minecraft.core.registries.Registries;
@@ -47,6 +48,13 @@ public class ModTagProvider extends CommonTagsProviderBase {
     @Override
     public void defaultBlockTags(Block block) {
         if (block instanceof SnadBlock) {
+            this.block(BlockTags.MINEABLE_WITH_SHOVEL).add(block);
+            return;
+        }
+
+        if (block instanceof CompressedBlock compressedBlock &&
+                (compressedBlock.getBaseBlock() == Blocks.GRAVEL ||
+                        compressedBlock.getBaseBlock() == Blocks.SAND)) {
             this.block(BlockTags.MINEABLE_WITH_SHOVEL).add(block);
             return;
         }

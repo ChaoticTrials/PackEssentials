@@ -93,6 +93,8 @@ public class RecipeProvider extends RecipeProviderBase implements CompressionExt
     @Override
     protected void setup() {
         this.compress(Blocks.COBBLESTONE, ModBlocks.compressedCobblestone);
+        this.compress(Blocks.GRAVEL, ModBlocks.compressedGravel);
+        this.compress(Blocks.SAND, ModBlocks.compressedSand);
         this.compress(Blocks.ANDESITE, ModBlocks.compressedAndesite);
         this.compress(Blocks.DIORITE, ModBlocks.compressedDiorite);
         this.compress(Blocks.GRANITE, ModBlocks.compressedGranite);
@@ -101,6 +103,8 @@ public class RecipeProvider extends RecipeProviderBase implements CompressionExt
         this.compress(Blocks.NETHERRACK, ModBlocks.compressedNetherrack);
 
         this.compress(ModBlocks.compressedCobblestone, ModBlocks.doubleCompressedCobblestone);
+        this.compress(ModBlocks.compressedGravel, ModBlocks.doubleCompressedGravel);
+        this.compress(ModBlocks.compressedSand, ModBlocks.doubleCompressedSand);
         this.compress(ModBlocks.compressedAndesite, ModBlocks.doubleCompressedAndesite);
         this.compress(ModBlocks.compressedDiorite, ModBlocks.doubleCompressedDiorite);
         this.compress(ModBlocks.compressedGranite, ModBlocks.doubleCompressedGranite);

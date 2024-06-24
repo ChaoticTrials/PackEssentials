@@ -1,5 +1,9 @@
 {
   "values": [
+    "packessentials:compressed_gravel",
+    "packessentials:compressed_sand",
+    "packessentials:double_compressed_gravel",
+    "packessentials:double_compressed_sand",
     "packessentials:red_snad",
     "packessentials:snad"
   ]
