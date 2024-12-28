@@ -10,15 +10,22 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import org.moddingx.libx.base.ItemBase;
 import org.moddingx.libx.mod.ModX;
@@ -50,20 +57,59 @@ public class BuriedMobItem<T extends EntityType<?>> extends ItemBase implements 
     @Override
     public InteractionResult useOn(@Nonnull UseOnContext context) {
         Level level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
 
-        BlockState blockState = level.getBlockState(pos);
-        if (!blockState.isAir() && !level.isClientSide()) {
-            boolean b = this.trySummon((ServerLevel) level, pos.above(), context.getItemInHand());
-            //noinspection DataFlowIssue
-            if (!((ServerPlayer) context.getPlayer()).gameMode.isCreative()) {
-                context.getItemInHand().shrink(1);
-            }
-
-            return InteractionResult.SUCCESS;
+        if (level.isClientSide()) {
+            return InteractionResult.FAIL;
         }
 
-        return InteractionResult.FAIL;
+        BlockPos pos = context.getClickedPos();
+        BlockState state = level.getBlockState(pos);
+
+        BlockPos summonPos;
+        if (state.getCollisionShape(level, pos).isEmpty()) {
+            summonPos = pos;
+        } else {
+            summonPos = pos.relative(context.getClickedFace());
+        }
+
+        boolean successfullySummoned = this.trySummon((ServerLevel) level, summonPos, context.getItemInHand());
+        //noinspection DataFlowIssue
+        if (successfullySummoned && !((ServerPlayer) context.getPlayer()).gameMode.isCreative()) {
+            context.getItemInHand().shrink(1);
+        }
+
+        return InteractionResult.SUCCESS;
+    }
+
+    @Nonnull
+    @Override
+    public InteractionResultHolder<ItemStack> use(@Nonnull Level level, @Nonnull Player player, @Nonnull InteractionHand usedHand) {
+        ItemStack stack = player.getItemInHand(usedHand);
+        BlockHitResult blockHitResult = Item.getPlayerPOVHitResult(level, player, ClipContext.Fluid.SOURCE_ONLY);
+
+        if (blockHitResult.getType() != BlockHitResult.Type.BLOCK) {
+            return InteractionResultHolder.pass(player.getItemInHand(usedHand));
+        }
+
+        if (!(level instanceof ServerLevel)) {
+            return InteractionResultHolder.success(stack);
+        }
+
+        BlockPos blockPos = blockHitResult.getBlockPos();
+        if (!(level.getBlockState(blockPos).getBlock() instanceof LiquidBlock)) {
+            return InteractionResultHolder.pass(stack);
+        }
+
+        if (!level.mayInteract(player, blockPos) || !player.mayUseItemAt(blockPos, blockHitResult.getDirection(), stack)) {
+            return InteractionResultHolder.fail(stack);
+        }
+
+        boolean successfullySummoned = this.trySummon((ServerLevel) level, blockPos, stack);
+        if (successfullySummoned && !((ServerPlayer) player).gameMode.isCreative()) {
+            stack.shrink(1);
+        }
+
+        return InteractionResultHolder.success(stack);
     }
 
     @Nonnull
