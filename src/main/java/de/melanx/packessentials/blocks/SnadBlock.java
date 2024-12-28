@@ -19,6 +19,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FallingBlock;
+import net.minecraft.world.level.block.GrowingPlantBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
@@ -92,12 +93,18 @@ public class SnadBlock extends FallingBlock implements Registerable, FeatureElem
     private static void growthBoost(ServerLevel level, BlockPos pos, RandomSource random) {
         BlockState plant = level.getBlockState(pos.above());
 
-        if (!plant.is(ModTagProvider.SNAD_PLANT)) {
+        GrowingPlantBlock growingPlantBlock = plant.getBlock() instanceof GrowingPlantBlock ? (GrowingPlantBlock) plant.getBlock() : null;
+        BlockState secondaryPlant = growingPlantBlock != null
+                ? growingPlantBlock.getHeadBlock().defaultBlockState()
+                : null;
+
+        if (!plant.is(ModTagProvider.SNAD_PLANT) && (secondaryPlant == null || !secondaryPlant.is(ModTagProvider.SNAD_PLANT))) {
             return;
         }
 
         boolean isSamePlant = true;
         int currentHeight = 1;
+        int remainingGrowthBoosts = PackConfig.Snad.growthBooster + level.getBlockState(pos).getValue(FERTILIZER);
 
         while (isSamePlant) {
             BlockPos currentPos = pos.above(currentHeight);
@@ -107,12 +114,32 @@ public class SnadBlock extends FallingBlock implements Registerable, FeatureElem
                 continue;
             }
 
-            Block nextPlant = level.getBlockState(currentPos).getBlock();
-            if (plant.is(nextPlant)) {
-                for (int i = 0; i < PackConfig.Snad.growthBooster + level.getBlockState(pos).getValue(FERTILIZER); i++) {
-                    //noinspection deprecation
-                    nextPlant.randomTick(level.getBlockState(currentPos), level, currentPos, random);
+            BlockState currentPlantState = level.getBlockState(currentPos);
+            Block currentPlant = currentPlantState.getBlock();
+
+            if (secondaryPlant == null && plant.is(currentPlant)) {
+                for (int i = 0; i < remainingGrowthBoosts; i++) {
+                    currentPlantState.randomTick(level, currentPos, random);
                 }
+
+                currentHeight++;
+                continue;
+            }
+
+            if (secondaryPlant == null) {
+                break;
+            }
+
+            while (secondaryPlant.is(currentPlant)) {
+                remainingGrowthBoosts--;
+                currentPlantState.randomTick(level, currentPos, random);
+                currentPlant = level.getBlockState(currentPos).getBlock();
+                if (remainingGrowthBoosts <= 0) {
+                    break;
+                }
+            }
+
+            if (remainingGrowthBoosts > 0) {
                 currentHeight++;
                 continue;
             }
