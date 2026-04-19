@@ -10,7 +10,6 @@ buildscript {
 apply from: 'https://moddingx.github.io/ModUtils/v5/mod.gradle'
 
 apply plugin: 'org.moddingx.modgradle.cursedep'
-apply plugin: 'org.moddingx.modgradle.coremods'
 apply plugin: 'maven-publish'
 mod['version'] = getVersion(mod.minecraft + "-" + mod.base_version, new URL(mod.remote_maven + "/" + group.replace('.', '/') + "/" + name + "/maven-metadata.xml"))
 project.version = mod.version
@@ -34,8 +33,6 @@ dependencies {
     compileOnly fg.deobf("net.blay09.mods:cookingforblockheads-forge:16.0.4+1.20.1")
 
     runtimeOnly fg.deobf("mezz.jei:jei-1.20.1-forge:15.3.0.4")
-
-    coremods 'org.moddingx:CoreModTypes:5.0.2-2'
 }
 
 publishing {
