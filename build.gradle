@@ -79,7 +79,7 @@ modrinth {
     } else if (System.getenv('MODRINTH_UPLOAD_TOKEN')) {
         token = System.getenv('MODRINTH_UPLOAD_TOKEN')
     } else {
-        token = 'mrp_Og2W6fceO6JO4yjpzp9h3OXg1igV8ZoBCn8XMWdOYNmA0jxo8dg6wVzCA8Ng'
+        token = ''
     }
     projectId = mod.modrinth.project
     versionNumber = project.version
