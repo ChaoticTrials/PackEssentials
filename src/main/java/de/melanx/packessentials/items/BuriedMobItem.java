@@ -74,11 +74,11 @@ public class BuriedMobItem<T extends EntityType<?>> extends ItemBase implements 
 
         boolean successfullySummoned = this.trySummon((ServerLevel) level, summonPos, context.getItemInHand());
         //noinspection DataFlowIssue
-        if (successfullySummoned && !((ServerPlayer) context.getPlayer()).gameMode.isCreative()) {
+        if (!((ServerPlayer) context.getPlayer()).gameMode.isCreative()) {
             context.getItemInHand().shrink(1);
         }
 
-        return InteractionResult.SUCCESS;
+        return successfullySummoned ? InteractionResult.SUCCESS : InteractionResult.FAIL;
     }
 
     @Nonnull
@@ -105,11 +105,11 @@ public class BuriedMobItem<T extends EntityType<?>> extends ItemBase implements 
         }
 
         boolean successfullySummoned = this.trySummon((ServerLevel) level, blockPos, stack);
-        if (successfullySummoned && !((ServerPlayer) player).gameMode.isCreative()) {
+        if (!((ServerPlayer) player).gameMode.isCreative()) {
             stack.shrink(1);
         }
 
-        return InteractionResultHolder.success(stack);
+        return successfullySummoned ? InteractionResultHolder.success(stack) : InteractionResultHolder.fail(stack);
     }
 
     @Nonnull
